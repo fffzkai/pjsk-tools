@@ -1,0 +1,9 @@
+@theme {
+    --color-miku: var(--color-miku);
+    --color-miku-dark: var(--color-miku-dark);
+    --color-luka: var(--color-luka);
+    --color-primary-text: var(--color-primary-text);
+
+    --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-shimmer: shimmer 2s linear infinite;
+}
