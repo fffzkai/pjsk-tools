@@ -956,64 +956,64 @@ function exportAndCopy() {
                 <PartH2 level="3">兑换物</PartH2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                     <div
-                        class="bg-white/40 dark:bg-slate-800/40 p-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm flex items-center justify-between"
+                        class="bg-white/40 dark:bg-slate-800/40 py-3 sm:py-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm grid grid-cols-2 items-center"
                     >
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-center whitespace-nowrap">
                             共获得
-                            <span class="text-miku text-lg font-bold ml-2 mr-1">{{
+                            <span class="text-miku text-[1.05rem] sm:text-lg font-bold mx-1.5">{{
                                 pGotCount
                             }}</span>
-                            <i class="icon-material170 mr-4 drop-shadow-sm" />
+                            <i class="icon-material170 drop-shadow-sm" />
                         </div>
                         <div
-                            class="flex items-center border-l dark:border-slate-600 pl-4 border-slate-300"
+                            class="flex items-center justify-center border-l dark:border-slate-600 border-slate-300 whitespace-nowrap"
                         >
                             消耗
                             <span
-                                class="text-slate-500 dark:text-slate-400 text-lg font-bold ml-2 mr-1"
+                                class="text-slate-500 dark:text-slate-400 text-[1.05rem] sm:text-lg font-bold mx-1.5"
                                 >{{ pUsedCount }}</span
                             >
                             <i class="icon-material170 drop-shadow-sm" />
                         </div>
                     </div>
                     <div
-                        class="bg-white/40 dark:bg-slate-800/40 p-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm flex items-center justify-between"
+                        class="bg-white/40 dark:bg-slate-800/40 py-3 sm:py-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm grid grid-cols-2 items-center"
                     >
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-center whitespace-nowrap">
                             共获得
-                            <span class="text-miku text-lg font-bold ml-2 mr-1">{{
+                            <span class="text-miku text-[1.05rem] sm:text-lg font-bold mx-1.5">{{
                                 giftGotCount
                             }}</span>
-                            <i class="icon-material171 mr-4 drop-shadow-sm" />
+                            <i class="icon-material171 drop-shadow-sm" />
                         </div>
                         <div
-                            class="flex items-center border-l dark:border-slate-600 pl-4 border-slate-300"
+                            class="flex items-center justify-center border-l dark:border-slate-600 border-slate-300 whitespace-nowrap"
                         >
                             消耗
                             <span
-                                class="text-slate-500 dark:text-slate-400 text-lg font-bold ml-2 mr-1"
+                                class="text-slate-500 dark:text-slate-400 text-[1.05rem] sm:text-lg font-bold mx-1.5"
                                 >{{ giftUsedCount }}</span
                             >
                             <i class="icon-material171 drop-shadow-sm" />
                         </div>
                     </div>
                     <div
-                        class="bg-white/40 dark:bg-slate-800/40 p-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm flex items-center justify-between col-span-1 md:col-span-2 lg:col-span-1"
+                        class="bg-white/40 dark:bg-slate-800/40 py-3 sm:py-4 rounded-xl border border-white/50 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-medium shadow-sm grid grid-cols-2 items-center col-span-1 md:col-span-2 lg:col-span-1"
                     >
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-center whitespace-nowrap">
                             共消耗
                             <span
-                                class="text-slate-500 dark:text-slate-400 text-lg font-bold ml-2 mr-1"
+                                class="text-slate-500 dark:text-slate-400 text-[1.05rem] sm:text-lg font-bold mx-1.5"
                                 >{{ ptUsedCount }}</span
                             >
-                            <i class="icon-eventbadge-shiho3 mr-4 drop-shadow-sm" />
+                            <i class="icon-eventbadge-shiho3 drop-shadow-sm" />
                         </div>
                         <div
-                            class="flex items-center border-l dark:border-slate-600 pl-4 border-slate-300"
+                            class="flex items-center justify-center border-l dark:border-slate-600 border-slate-300 whitespace-nowrap"
                         >
                             消耗
                             <span
-                                class="text-blue-400 text-lg font-bold ml-2 mr-1 text-shadow-sm"
+                                class="text-blue-400 text-[1.05rem] sm:text-lg font-bold ml-1.5 mr-1 text-shadow-sm"
                                 >{{ paidJewelUsedCount }}</span
                             >
                             <span class="text-sm dark:text-slate-400 text-slate-500 mr-1"
