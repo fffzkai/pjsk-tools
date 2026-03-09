@@ -16,8 +16,20 @@ import InputTextarea from "@/components/controls/input-textarea.vue";
 // vars
 const signDays = ref(0);
 const gachaFes = ref(0);
-const gachaGift = ref(false);
-const gachaCostume = ref(false);
+const gachaGiftValue = ref(false);
+const gachaGift = computed({
+    get: () => (stamp[4] ? true : gachaGiftValue.value),
+    set: (value: boolean) => {
+        gachaGiftValue.value = value;
+    }
+});
+const gachaCostumeValue = ref(false);
+const gachaCostume = computed({
+    get: () => (stamp[4] ? true : gachaCostumeValue.value),
+    set: (value: boolean) => {
+        gachaCostumeValue.value = value;
+    }
+});
 const rankP = ref(0);
 const mySekai = ref(0);
 const stamp: Reactive<(number | undefined)[]> = reactive([]);
@@ -537,8 +549,11 @@ function exportAndCopy() {
                         >
                             <span class="mr-2">我要抽！</span>
                             <div class="h-6 w-12 my-auto">
-                                <CheckboxSwitch v-model="gachaGift" />
+                                <CheckboxSwitch v-model="gachaGift" :disabled="!!stamp[4]" />
                             </div>
+                            <span v-if="stamp[4]" class="ml-2 font-normal text-sm"
+                                >被集章卡要求锁定了！</span
+                            >
                         </div>
                     </div>
                 </div>
@@ -559,8 +574,11 @@ function exportAndCopy() {
                         >
                             <span class="mr-2">我要抽！</span>
                             <div class="h-6 w-12 my-auto">
-                                <CheckboxSwitch v-model="gachaCostume" />
+                                <CheckboxSwitch v-model="gachaCostume" :disabled="!!stamp[4]" />
                             </div>
+                            <span v-if="stamp[4]" class="ml-2 font-normal text-sm"
+                                >被集章卡要求锁定了！</span
+                            >
                         </div>
                     </div>
                 </div>
