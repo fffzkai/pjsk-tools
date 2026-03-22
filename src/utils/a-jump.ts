@@ -133,5 +133,5 @@ const aJump = new AJump();
 export default aJump;
 
 export function makeTitle(k: string): () => string {
-    return () => k + " | PJSK Tools"; // TODO: site name
+    return () => k + " | Moesekai Tools";
 }

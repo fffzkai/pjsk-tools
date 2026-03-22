@@ -2,6 +2,7 @@
 import EffectLink from "@/components/effects/effect-link.vue";
 import { isDark, toggleDark } from "@/utils/theme.ts";
 import { SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
+import aJump from "@/utils/a-jump.ts";
 </script>
 
 <template>
@@ -38,6 +39,13 @@ import { SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
 
             <!-- Right -->
             <div class="flex items-center gap-3">
+                <button
+                    @click="aJump.toUrl('/learning')"
+                    class="p-1 rounded-full bg-slate-100/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 border border-transparent dark:border-slate-700/50"
+                    aria-label="Learn"
+                >
+                    <i class="icon-circle-question-mark size-5"/>
+                </button>
                 <!-- Theme Toggle Button -->
                 <button
                     @click="toggleDark"

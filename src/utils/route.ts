@@ -3,6 +3,7 @@ import PageIndex from "@/pages/page-index.vue";
 import PageNotFound from "@/pages/page-not-found.vue";
 import Page1an from "@/pages/page-1an.vue";
 import { makeTitle } from "@/utils/a-jump.ts";
+import PageLearning from "@/pages/page-learning.vue";
 
 export type Route =
     | {
@@ -31,7 +32,13 @@ export const routes: Route[] = [
         type: "page",
         path: "/",
         component: PageIndex,
-        title: "PJSK Tools" // TODO: site name
+        title: "Moesekai Tools"
+    },
+    {
+        type: "page",
+        path: "/learning",
+        component: PageLearning,
+        title: "使用教程"
     },
     {
         type: "page",
