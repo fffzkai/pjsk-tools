@@ -62,16 +62,29 @@ function generateIconCSS({
         }
     }
 
-    if (fs.existsSync(iconsDir)) {
-        fs.readdirSync(iconsDir)
-            .filter(
-                (file) => file.endsWith(".webp") || file.endsWith(".png") || file.endsWith(".svg")
-            )
-            .forEach((file) => {
-                const iconName = path.parse(file).name;
-                icons[iconName] = `/assets/icons/${file}`;
-            });
+    function scanIcons(currentDir: string, relativePath: string[] = []) {
+        if (!fs.existsSync(currentDir)) return;
+
+        const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+        for (const entry of entries) {
+            const fullPath = path.join(currentDir, entry.name);
+
+            if (entry.isDirectory()) {
+                scanIcons(fullPath, [...relativePath, entry.name]);
+            } else {
+                const ext = path.extname(entry.name).toLowerCase();
+                if ([".webp", ".png", ".svg"].includes(ext)) {
+                    const fileName = path.parse(entry.name).name;
+                    const iconKey = [...relativePath, fileName].join("-");
+                    icons[iconKey] = ["/assets/icons", ...relativePath, entry.name].join("/");
+                }
+            }
+        }
     }
+
+    scanIcons(iconsDir);
+
     let cssContent = `@utility icon-base{
     width: ${iconSize};
     height: ${iconSize};

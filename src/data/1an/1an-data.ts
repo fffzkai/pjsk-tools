@@ -5,6 +5,7 @@ type Rewards = {
     gacha?: number;
     jewel?: number;
     drink?: number;
+    drinkL?: number;
 };
 
 const signIn: FixedLengthArray<Rewards, 7> = [
@@ -57,21 +58,21 @@ const stamp: {
                 require: "消耗 80 火",
                 rewards: {
                     p: 10,
-                    drink: 1
+                    drinkL: 1
                 }
             },
             {
                 require: "消耗 150 火",
                 rewards: {
                     p: 15,
-                    drink: 3
+                    drinkL: 3
                 }
             },
             {
                 require: "消耗 390 火",
                 rewards: {
                     p: 30,
-                    drink: 5
+                    drinkL: 5
                 }
             }
         ]
@@ -83,21 +84,21 @@ const stamp: {
                 require: "通关 20 首不同歌曲",
                 rewards: {
                     p: 10,
-                    drink: 1
+                    drinkL: 1
                 }
             },
             {
                 require: "通关 39 首不同歌曲",
                 rewards: {
                     p: 15,
-                    drink: 3
+                    drinkL: 3
                 }
             },
             {
                 require: "通关 60 首不同歌曲",
                 rewards: {
                     p: 30,
-                    drink: 5
+                    drinkL: 5
                 }
             }
         ]
@@ -109,21 +110,21 @@ const stamp: {
                 require: "演出 50 次",
                 rewards: {
                     p: 15,
-                    drink: 1
+                    drinkL: 1
                 }
             },
             {
                 require: "累计 FC 20 次",
                 rewards: {
                     p: 30,
-                    drink: 3
+                    drinkL: 3
                 }
             },
             {
                 require: "得分超过 150w ，累计15 次",
                 rewards: {
                     p: 50,
-                    drink: 10
+                    drinkL: 10
                 }
             }
         ]
@@ -135,21 +136,21 @@ const stamp: {
                 require: "获得 50万 pt",
                 rewards: {
                     p: 15,
-                    drink: 1
+                    drinkL: 1
                 }
             },
             {
                 require: "获得 150万 pt",
                 rewards: {
                     p: 30,
-                    drink: 3
+                    drinkL: 3
                 }
             },
             {
                 require: "获得 390万 pt",
                 rewards: {
                     p: 50,
-                    drink: 10
+                    drinkL: 10
                 }
             }
         ]

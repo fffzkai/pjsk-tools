@@ -212,10 +212,10 @@ const paidJewelUsedCount = computed(() => {
     }
     const stampLevel = stamp[4];
     if (stampLevel == 1) {
-        count += 5000 + 1500; // 10选1限定池 + 1种周年set
+        count += 500 + 1500; // 服装阶梯招募STEP1 + 1种周年set
     }
     if (stampLevel == 2) {
-        count += 5000 + 1500 * 2; // 10选1限定池 + 2种周年set
+        count += 6500 + 1500 + 3000; // 服装阶梯招募STEP4 + 2种周年set(1500+3000)
     }
 
     return count;
@@ -264,6 +264,7 @@ const statistics = computed(() => {
 
     let jewel = 0;
     let gacha = 0;
+    let drinkL = 0;
     let drink = 0;
     let heartpiece = 0;
 
@@ -278,6 +279,7 @@ const statistics = computed(() => {
         jewel += data.stamp[i]!.level[stamp[i]!]!.rewards.jewel || 0;
         gacha += data.stamp[i]!.level[stamp[i]!]!.rewards.gacha || 0;
         drink += data.stamp[i]!.level[stamp[i]!]!.rewards.drink || 0;
+        drinkL += data.stamp[i]!.level[stamp[i]!]!.rewards.drinkL || 0;
         heartpiece += 70;
     }
 
@@ -303,7 +305,7 @@ const statistics = computed(() => {
     };
     map["drinkL"] = {
         icon: "icon-boost-item2",
-        count: 0
+        count: drinkL
     };
     map["drink"] = {
         icon: "icon-boost-item1",
@@ -716,11 +718,11 @@ function exportAndCopy() {
                                             ><i class="icon-gacha-ticket drop-shadow-sm" />
                                         </span>
                                         <span
-                                            v-if="card.rewards.drink"
+                                            v-if="card.rewards.drinkL"
                                             class="flex items-center ml-1"
                                         >
-                                            <span class="mr-0.5">{{ card.rewards.drink }}</span
-                                            ><i class="icon-boost-item1 drop-shadow-sm" />
+                                            <span class="mr-0.5">{{ card.rewards.drinkL }}</span
+                                            ><i class="icon-boost-item2 drop-shadow-sm" />
                                         </span>
                                         <span
                                             class="flex items-center ml-1 text-slate-600 dark:text-slate-300"
