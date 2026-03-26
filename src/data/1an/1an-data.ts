@@ -211,6 +211,18 @@ const pExchange = {
         limit: 1,
         icon: "icon-gacha-ticket-star4"
     },
+    cos01015:{
+        count: 1,
+        expense: 150,
+        limit: 1,
+        icon: "icon-cos-01015-body"
+    },
+    cos01016:{
+      count: 1,
+      expense: 150,
+      limit: 1,
+      icon: "icon-cos-01016-body"
+    },
     heartcrystal: {
         count: 1,
         expense: 200,

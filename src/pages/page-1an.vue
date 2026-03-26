@@ -291,6 +291,14 @@ const statistics = computed(() => {
         icon: "chara-res022_no046_normal,mysterious,2",
         count: 0
     };
+    map["cos01015"] = {
+        icon: "icon-cos-01015-body",
+        count: 0
+    };
+    map["cos01016"] = {
+        icon: "icon-cos-01016-body",
+        count: 0
+    };
     map["jewel"] = {
         icon: "icon-jewel",
         count: jewel
