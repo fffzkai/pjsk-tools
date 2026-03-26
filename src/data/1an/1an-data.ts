@@ -54,49 +54,49 @@ const stamp: {
         description: "能量演出卡",
         level: [
             {
-                require: "消耗 50 火",
+                require: "消耗 80 火",
                 rewards: {
-                    p: 5,
+                    p: 10,
                     drink: 1
                 }
             },
             {
-                require: "消耗 100 火",
+                require: "消耗 150 火",
                 rewards: {
-                    p: 10,
-                    drink: 2
+                    p: 15,
+                    drink: 3
                 }
             },
             {
-                require: "消耗 300 火",
+                require: "消耗 390 火",
                 rewards: {
-                    p: 20,
-                    drink: 2
+                    p: 30,
+                    drink: 5
                 }
             }
         ]
     },
     {
-        description: "乐曲卡",
+        description: "歌曲卡（可AUTO）",
         level: [
             {
-                require: "通关 10 首不同歌曲",
+                require: "通关 20 首不同歌曲",
                 rewards: {
-                    p: 5,
+                    p: 10,
                     drink: 1
                 }
             },
             {
-                require: "通关 25 首不同歌曲",
+                require: "通关 39 首不同歌曲",
                 rewards: {
-                    p: 10,
-                    drink: 2
+                    p: 15,
+                    drink: 3
                 }
             },
             {
-                require: "通关 50 首不同歌曲",
+                require: "通关 60 首不同歌曲",
                 rewards: {
-                    p: 20,
+                    p: 30,
                     drink: 5
                 }
             }
@@ -106,68 +106,68 @@ const stamp: {
         description: "演出卡",
         level: [
             {
-                require: "演出 30 次",
+                require: "演出 50 次",
                 rewards: {
-                    p: 10,
+                    p: 15,
                     drink: 1
                 }
             },
             {
-                require: "累计 FC 15 次",
+                require: "累计 FC 20 次",
                 rewards: {
-                    p: 20,
-                    drink: 2
+                    p: 30,
+                    drink: 3
                 }
             },
             {
-                require: "累计 AP 15 次",
+                require: "得分超过 150w ，累计15 次",
                 rewards: {
-                    p: 30,
-                    drink: 5
+                    p: 50,
+                    drink: 10
                 }
             }
         ]
     },
     {
-        description: "shiho 5箱 PT卡",
+        description: "活动积分卡",
         level: [
             {
-                require: "获得 30万 pt",
+                require: "获得 50万 pt",
                 rewards: {
-                    p: 10,
+                    p: 15,
                     drink: 1
                 }
             },
             {
-                require: "获得 100万 pt",
+                require: "获得 150万 pt",
                 rewards: {
-                    p: 20,
-                    drink: 2
+                    p: 30,
+                    drink: 3
                 }
             },
             {
-                require: "获得 200万 pt",
+                require: "获得 390万 pt",
                 rewards: {
-                    p: 30,
-                    drink: 5
+                    p: 50,
+                    drink: 10
                 }
             }
         ]
     },
     {
-        description: "卡池/商店卡",
+        description: "商店卡",
         level: [
             {
                 require: "累计抽卡50次",
                 rewards: {
-                    p: 10,
+                    p: 20,
                     gacha: 5
                 }
             },
             {
                 require: "完成全部子任务",
                 rewards: {
-                    p: 50,
+                    p: 100,
                     gacha: 20,
                     jewel: 1000
                 },
@@ -175,7 +175,7 @@ const stamp: {
                     "抽卡 100 次",
                     "bfes池或shiho5箱卡池抽 50次",
                     "抽服装池（3000付费水）",
-                    "抽10选1限定池（5000付费，国服排期未放）",
+                    "抽1次1周年纪念庆典服装阶梯招募STEP1（500付费水）",
                     "抽1次礼物池（3000付费水）",
                     "购买1种周年set（最低1500付费）",
                     "开通4月通行证或烤森通行证（12000点数的那个）"
@@ -184,7 +184,7 @@ const stamp: {
             {
                 require: "完成全部子任务",
                 rewards: {
-                    p: 100,
+                    p: 200,
                     gacha: 30,
                     jewel: 2000
                 },
@@ -192,10 +192,10 @@ const stamp: {
                     "抽卡 200 次",
                     "bfes池或shiho5箱卡池抽 100 次",
                     "抽服装池（3000付费水）",
-                    "抽10选1限定池（5000付费，国服排期未放）",
+                    "抽1次1周年纪念庆典服装阶梯招募STEP4（共6500付费水）",
                     "抽1次礼物池（3000付费水）",
                     "购买2种周年set",
-                    "开通4月通行证或烤森通行证（12000点数的那个）"
+                    "开通4月通行证或烤森通行证（含有12000点数的）"
                 ]
             }
         ]
