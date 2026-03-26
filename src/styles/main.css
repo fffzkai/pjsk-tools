@@ -2,6 +2,45 @@
 @import "./icons.css";
 @import "./theme.css";
 
+@import "misans-vf";
+
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/src/assets/fonts/poppins-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/src/assets/fonts/poppins-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/src/assets/fonts/poppins-latin-600-normal.woff2") format("woff2");
+}
+
+:root {
+    font-family:
+        "Poppins",
+        "MiSans",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {

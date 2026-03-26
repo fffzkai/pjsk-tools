@@ -44,7 +44,30 @@ import aJump from "@/utils/a-jump.ts";
                     class="p-1 rounded-full bg-slate-100/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 border border-transparent dark:border-slate-700/50"
                     aria-label="Learn"
                 >
-                    <i class="icon-circle-question-mark size-5"/>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        class="size-7"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <path d="M12 17h.01" />
+                    </svg>
+                </button>
+
+                <button
+                    @click="aJump.toUrl('https://github.com/Bluemangoo/pjsk-tools')"
+                    class="rounded-full bg-slate-100/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 border border-transparent dark:border-slate-700/50"
+                    aria-label="Learn"
+                >
+                    <i class="icon-github-light dark:icon-github-dark size-7" />
                 </button>
                 <!-- Theme Toggle Button -->
                 <button

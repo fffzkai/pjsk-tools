@@ -250,7 +250,7 @@ const pExchange = {
     drinkL: {
         count: 1,
         expense: 10,
-        limit: 50,
+        limit: 5,
         icon: "icon-boost-item2"
     },
     liveCoin: {
@@ -349,7 +349,7 @@ const giftExchange = {
     drinkL: {
         count: 1,
         expense: 1,
-        limit: 5,
+        limit: 50,
         icon: "icon-boost-item2"
     },
     exp3: {
@@ -679,7 +679,7 @@ const ptExchange = {
         icon: "icon-material167"
     },
     p: {
-        count: 15,
+        count: 10,
         expense: 5000,
         limit: 15,
         icon: "icon-material170"

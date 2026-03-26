@@ -15,7 +15,8 @@ import InputTextarea from "@/components/controls/input-textarea.vue";
 
 // vars
 const signDays = ref(0);
-const gachaFes = ref(0);
+const gachaFesFree = ref(0);
+const gachaFesPaid = ref(0);
 const gachaGiftValue = ref(false);
 const gachaGift = computed({
     get: () => (stamp[4] ? true : gachaGiftValue.value),
@@ -65,7 +66,7 @@ const ptExchange = reactive(
 function clear() {
     signDays.value = 0;
     updateSignIn();
-    gachaFes.value = 0;
+    gachaFesFree.value = 0;
     gachaGift.value = false;
     gachaCostume.value = false;
     rankP.value = 0;
@@ -87,7 +88,8 @@ function clear() {
 function exportTo(): string {
     const data = {
         signDays: signDays.value,
-        gachaFes: gachaFes.value,
+        gachaFesFree: gachaFesFree.value,
+        gachaFesPaid: gachaFesPaid.value,
         gachaGift: gachaGift.value,
         gachaCostume: gachaCostume.value,
         rankP: rankP.value,
@@ -120,7 +122,8 @@ function importFrom(dataStr: string) {
     clear();
     signDays.value = data.signDays;
     updateSignIn();
-    gachaFes.value = data.gachaFes;
+    gachaFesFree.value = data.gachaFesFree;
+    gachaFesPaid.value = data.gachaFesPaid;
     gachaGift.value = data.gachaGift;
     gachaCostume.value = data.gachaCostume;
     rankP.value = data.rankP;
@@ -152,7 +155,8 @@ onMounted(() => {
 watch(
     [
         signDays,
-        gachaFes,
+        gachaFesFree,
+        gachaFesPaid,
         gachaGift,
         gachaCostume,
         rankP,
@@ -222,13 +226,17 @@ const paidJewelUsedCount = computed(() => {
 });
 // positive
 
+const gachaPoints = computed(() => gachaFesFree.value * 0.5 + gachaFesPaid.value);
+const gachaFesProgress = computed(() => gachaPoints.value % 50);
+const gachaGotP = computed(() => Math.floor(gachaPoints.value / 50) * 100);
+
 const pGotCount = computed(() => {
     let count = 0;
 
     for (let i = 0; i < signDays.value; i++) {
         count += data.signIn[i]!.p || 0;
     }
-    count += gachaFes.value * 2; // n/50*100
+    count += gachaGotP.value;
     if (gachaGift.value) {
         count += 200;
     }
@@ -527,17 +535,31 @@ function exportAndCopy() {
                         <div
                             class="flex items-center text-center sm:text-left text-sm sm:text-base text-slate-700 dark:text-slate-200 font-medium"
                         >
-                            每满 50 抽 → 100<i class="icon-material170 ml-1" />，无上限
+                            免费每抽 0.5 点，付费没抽 1 点，每满 50 点 → 100<i
+                                class="icon-material170 ml-1"
+                            />，无上限
                         </div>
                         <div
-                            class="flex flex-row items-center w-max text-slate-700 dark:text-slate-200 font-bold bg-white/60 dark:bg-slate-900/60 pl-2 pr-4 py-1 rounded-full border border-white/50 dark:border-slate-700/50 shadow-inner"
+                            class="flex flex-row items-center w-max"
                         >
-                            <div class="h-8 min-w-24 mr-3">
-                                <InputNumber v-model="gachaFes" :min="0" :step="50" />
+                            <div class="flex flex-col">
+                                <div class="flex flex-row items-center w-max text-slate-700 dark:text-slate-200 font-bold bg-white/60 dark:bg-slate-900/60 px-4 py-2 rounded-full border border-white/50 dark:border-slate-700/50 shadow-inner">
+                                    <span class="mr-3">免费</span>
+                                    <div class="h-8 min-w-24">
+                                        <InputNumber v-model="gachaFesFree" :min="0" />
+                                    </div>
+                                </div>
+                                <div class="flex flex-row items-center w-max text-slate-700 dark:text-slate-200 font-bold bg-white/60 dark:bg-slate-900/60 px-4 py-2 rounded-full border border-white/50 dark:border-slate-700/50 shadow-inner">
+                                    <span class="mr-3">付费</span>
+                                    <div class="h-8 min-w-24">
+                                        <InputNumber v-model="gachaFesPaid" :min="0" />
+                                    </div>
+                                </div>
                             </div>
                             <span class="text-slate-400 dark:text-slate-500 mr-2">→</span>
-                            <span class="text-miku text-lg mr-1">{{ gachaFes * 2 }}</span>
+                            <span class="text-miku text-lg mr-1">{{ gachaGotP }}</span>
                             <i class="icon-material170 drop-shadow-sm" />
+                            <span v-if="gachaFesProgress" class="text-slate-400 dark:text-slate-500 mx-2">余 {{ gachaFesProgress }} 点</span>
                         </div>
                     </div>
                 </div>
