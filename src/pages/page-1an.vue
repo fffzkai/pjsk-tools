@@ -32,7 +32,7 @@ const gachaCostume = computed({
         gachaCostumeValue.value = value;
     }
 });
-const rankP = ref(0);
+const rankStep = ref(0);
 const mySekai = ref(0);
 const stamp: Reactive<(number | undefined)[]> = reactive([]);
 const pExchange = reactive(
@@ -68,9 +68,11 @@ function clear() {
     signDays.value = 0;
     updateSignIn();
     gachaFesFree.value = 0;
+    gachaFesPaid.value = 0;
     gachaGift.value = false;
     gachaCostume.value = false;
-    rankP.value = 0;
+    rankStep.value = 0;
+    updateRankStep();
     mySekai.value = 0;
     stamp.length = 0;
     for (let key1 in data.pExchange) {
@@ -93,7 +95,7 @@ function exportTo(): string {
         gachaFesPaid: gachaFesPaid.value,
         gachaGift: gachaGift.value,
         gachaCostume: gachaCostume.value,
-        rankP: rankP.value,
+        rankStep: rankStep.value,
         mySekai: mySekai.value,
         stamp: [...stamp],
         pExchange: { ...pExchange } as Record<string, number | undefined>,
@@ -127,7 +129,8 @@ function importFrom(dataStr: string) {
     gachaFesPaid.value = data.gachaFesPaid;
     gachaGift.value = data.gachaGift;
     gachaCostume.value = data.gachaCostume;
-    rankP.value = data.rankP;
+    rankStep.value = data.rankStep;
+    updateRankStep();
     mySekai.value = data.mySekai;
     for (let i = 0; i < 5 && i < data.stamp.length; i++) {
         stamp[i] = data.stamp[i] || undefined;
@@ -160,7 +163,7 @@ watch(
         gachaFesPaid,
         gachaGift,
         gachaCostume,
-        rankP,
+        rankStep,
         mySekai,
         stamp,
         pExchange,
@@ -230,6 +233,21 @@ const paidJewelUsedCount = computed(() => {
 const gachaPoints = computed(() => gachaFesFree.value * 0.5 + gachaFesPaid.value);
 const gachaFesProgress = computed(() => gachaPoints.value % 50);
 const gachaGotP = computed(() => Math.floor(gachaPoints.value / 50) * 100);
+
+const rankP = computed(() => {
+    switch (rankStep.value) {
+        case 0:
+            return 0;
+        case 1: // t10w
+            return 50;
+        case 2: // t5w
+            return 75;
+        case 3: // t1w
+            return 100;
+        default:
+            return 0;
+    }
+});
 
 const pGotCount = computed(() => {
     let count = 0;
@@ -404,6 +422,7 @@ const pCountFormatted = computed(() => {
 });
 
 // page controls
+// tabs
 const tabs = [
     { key: "collect", label: '收集<i class="icon-material170" ></i>' },
     { key: "exchangeP", label: '<i class="icon-material170" ></i>兑换所' },
@@ -414,6 +433,7 @@ const tabs = [
 ];
 const activeTab = ref(tabs[0]!.key);
 
+// sign in
 const signInRewardList = data.signIn.map((item, index) => {
     let tooltip = "";
     if (item.p) {
@@ -469,6 +489,53 @@ const signInRewards = computed(() => {
     }
     return count;
 });
+
+const rankStepList: { label: string; value: number; tooltip: string }[] = [];
+for (let i = 0; i <= 3; i++) {
+    let text = "";
+    let p = 0;
+    switch (i) {
+        case 0:
+            text = "未达成";
+            p = 0;
+            break;
+        case 1:
+            text = "排行榜 10 万名";
+            p = 50;
+            break;
+        case 2:
+            text = "排行榜 5 万名";
+            p = 75;
+            break;
+        case 3:
+            text = "排行榜 1 万名";
+            p = 100;
+            break;
+    }
+    const tooltip = `${p}<i class="icon-material170" ></i> `;
+    rankStepList.push({
+        label: `<div class="block"><div><i class="icon-material170 size-16" ></i></div><div class="text-xs font-medium">${text}</div></div><span
+            class="absolute right-2 bottom-6 min-w-5 h-5 px-1.5 bg-miku text-white rounded-full text-[0.65rem] font-bold flex items-center justify-center shadow-md border border-white"
+            >${p || 0}</span
+        >`,
+        value: i,
+        tooltip
+    });
+}
+const rankStepSelect = ref<number[]>([]);
+const handleStepChange = (payload: {
+    value: string | number;
+    checked: boolean;
+    currentList: (string | number)[];
+}) => {
+    rankStep.value = payload.value as number;
+    rankStepSelect.value = [payload.value as number];
+};
+function updateRankStep() {
+    rankStepSelect.value = [rankStep.value];
+}
+
+// import export controls
 const importText = ref("");
 const importStat = ref<boolean>();
 function clearUI() {
@@ -529,16 +596,19 @@ function exportAndCopy() {
                     <PartH2 level="3"> 卡池获取 </PartH2>
                 </div>
                 <div
-                    class="flex flex-col sm:flex-row items-center bg-white/40 dark:bg-slate-800/40 p-3 rounded-2xl border border-white/50 dark:border-slate-700/50 shadow-sm mb-4"
+                    class="flex flex-row flex-wrap items-center bg-white/40 dark:bg-slate-800/40 p-3 rounded-2xl border border-white/50 dark:border-slate-700/50 shadow-sm mb-4"
                 >
                     <i class="icon-gacha-banner704 w-60 h-28 rounded-xl shadow-md" />
                     <div class="m-3 sm:m-5 flex flex-col items-center sm:items-start gap-3">
                         <div
-                            class="flex items-center text-center sm:text-left text-sm sm:text-base text-slate-700 dark:text-slate-200 font-medium"
+                            class="block lg:flex lg:flex-row sm:text-left text-sm sm:text-base text-slate-700 dark:text-slate-200 font-medium"
                         >
-                            免费每抽 0.5 点，付费每抽 1 点，每满 50 点 → 100<i
-                                class="icon-material170 ml-1"
-                            />，无上限
+                            <div class="flex items-center text-center h-6">
+                                免费每抽 0.5 点，付费每抽 1 点；
+                            </div>
+                            <div class="flex items-center text-center h-6">
+                                每满 50 点 → 100<i class="icon-material170 size-5 ml-1" />，无上限
+                            </div>
                         </div>
                         <div class="flex flex-row items-center w-max">
                             <div class="flex flex-col">
@@ -622,6 +692,14 @@ function exportAndCopy() {
                     </div>
                 </div>
                 <div class="px-2">
+                    <PartH2 level="3"> 排行榜 </PartH2>
+                </div>
+                <CheckboxGroup
+                    v-model="rankStepSelect"
+                    :options="rankStepList"
+                    @change="handleStepChange"
+                ></CheckboxGroup>
+                <div class="px-2 mt-6">
                     <PartH2 level="3"> 获取零碎碎片 </PartH2>
                 </div>
                 <!-- Combined Box for PT Exchange & My Sekai -->
