@@ -577,7 +577,7 @@ const ptExchange = {
         icon: "icon-jewel"
     },
     drink: {
-        count: 100,
+        count: 1,
         expense: 100,
         limit: 10,
         icon: "icon-boost-item1"
