@@ -120,29 +120,35 @@ function exportTo(): string {
     }
     return JSON.stringify(data);
 }
+function number(value: any, defaultValue: number = 0): number {
+    if (typeof value === "number" && !isNaN(value)) {
+        return value;
+    }
+    return defaultValue;
+}
 function importFrom(dataStr: string) {
     const data = JSON.parse(dataStr);
     clear();
-    signDays.value = data.signDays;
+    signDays.value = number(data.signDays);
     updateSignIn();
-    gachaFesFree.value = data.gachaFesFree;
-    gachaFesPaid.value = data.gachaFesPaid;
-    gachaGift.value = data.gachaGift;
-    gachaCostume.value = data.gachaCostume;
-    rankStep.value = data.rankStep;
+    gachaFesFree.value = number(data.gachaFesFree);
+    gachaFesPaid.value = number(data.gachaFesPaid);
+    gachaGift.value = Boolean(data.gachaGift);
+    gachaCostume.value = Boolean(data.gachaCostume);
+    rankStep.value = number(data.rankStep);
     updateRankStep();
     mySekai.value = data.mySekai;
     for (let i = 0; i < 5 && i < data.stamp.length; i++) {
         stamp[i] = data.stamp[i] || undefined;
     }
     for (let key in data.pExchange) {
-        pExchange[key as keyof typeof pExchange] = data.pExchange[key];
+        pExchange[key as keyof typeof pExchange] = number(data.pExchange[key]);
     }
     for (let key in data.giftExchange) {
-        giftExchange[key as keyof typeof giftExchange] = data.giftExchange[key];
+        giftExchange[key as keyof typeof giftExchange] = number(data.giftExchange[key]);
     }
     for (let key in data.ptExchange) {
-        ptExchange[key as keyof typeof ptExchange] = data.ptExchange[key];
+        ptExchange[key as keyof typeof ptExchange] = number(data.ptExchange[key]);
     }
 }
 onMounted(() => {
@@ -318,12 +324,8 @@ const statistics = computed(() => {
         icon: "chara-res022_no046_normal,mysterious,2",
         count: 0
     };
-    map["cos01015"] = {
-        icon: "icon-cos-01015-body",
-        count: 0
-    };
-    map["cos01016"] = {
-        icon: "icon-cos-01016-body",
+    map["cos"] = {
+        icon: "icon-cos-1an",
         count: 0
     };
     map["jewel"] = {
@@ -491,14 +493,10 @@ const signInRewards = computed(() => {
 });
 
 const rankStepList: { label: string; value: number; tooltip: string }[] = [];
-for (let i = 0; i <= 3; i++) {
+for (let i = 1; i <= 3; i++) {
     let text = "";
     let p = 0;
     switch (i) {
-        case 0:
-            text = "未达成";
-            p = 0;
-            break;
         case 1:
             text = "排行榜 10 万名";
             p = 50;
@@ -516,7 +514,7 @@ for (let i = 0; i <= 3; i++) {
     rankStepList.push({
         label: `<div class="block"><div><i class="icon-material170 size-16" ></i></div><div class="text-xs font-medium">${text}</div></div><span
             class="absolute right-2 bottom-6 min-w-5 h-5 px-1.5 bg-miku text-white rounded-full text-[0.65rem] font-bold flex items-center justify-center shadow-md border border-white"
-            >${p || 0}</span
+            >${p}</span
         >`,
         value: i,
         tooltip
@@ -528,11 +526,20 @@ const handleStepChange = (payload: {
     checked: boolean;
     currentList: (string | number)[];
 }) => {
+    if (rankStep.value == payload.value) {
+        rankStep.value = 0;
+        rankStepSelect.value = [];
+        return;
+    }
     rankStep.value = payload.value as number;
     rankStepSelect.value = [payload.value as number];
 };
 function updateRankStep() {
-    rankStepSelect.value = [rankStep.value];
+    if (rankStep.value > 0) {
+        rankStepSelect.value = [rankStep.value];
+    } else {
+        rankStepSelect.value = [];
+    }
 }
 
 // import export controls

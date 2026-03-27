@@ -74,7 +74,7 @@ function generateIconCSS({
                 scanIcons(fullPath, [...relativePath, entry.name]);
             } else {
                 const ext = path.extname(entry.name).toLowerCase();
-                if ([".webp", ".png", ".svg"].includes(ext)) {
+                if ([".webp", ".png", ".jpg", ".svg"].includes(ext)) {
                     const fileName = path.parse(entry.name).name;
                     const iconKey = [...relativePath, fileName].join("-");
                     icons[iconKey] = ["/assets/icons", ...relativePath, entry.name].join("/");
