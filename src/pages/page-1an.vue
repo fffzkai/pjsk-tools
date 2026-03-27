@@ -268,7 +268,7 @@ const pGotCount = computed(() => {
     if (gachaCostume.value) {
         count += 200;
     }
-    count += ptExchange.p * 15;
+    count += ptExchange.p * 10;
     count += rankP.value;
     count += mySekai.value;
 
@@ -723,7 +723,7 @@ function exportAndCopy() {
                         <div
                             class="flex items-center text-sm text-slate-600 dark:text-slate-300 font-medium bg-white/50 dark:bg-slate-900/40 p-3 rounded-xl border border-white/40 dark:border-slate-700/40 shadow-inner mb-3"
                         >
-                            5000 <i class="icon-eventbadge-shiho3 mx-1" /> → 15<i
+                            5000 <i class="icon-eventbadge-shiho3 mx-1" /> → 10<i
                                 class="icon-material170 mx-1"
                             />，限15次
                         </div>
@@ -736,7 +736,7 @@ function exportAndCopy() {
                             <span class="text-slate-400 dark:text-slate-500 mx-1">*</span> 5k
                             <i class="icon-eventbadge-shiho3 ml-0.5 mr-2" />
                             <span class="text-slate-400 dark:text-slate-500 mr-2">→</span>
-                            <span class="text-miku text-lg mr-1">{{ ptExchange.p * 15 }}</span>
+                            <span class="text-miku text-lg mr-1">{{ ptExchange.p * 10 }}</span>
                             <i class="icon-material170 drop-shadow-sm" />
                         </div>
                     </div>
