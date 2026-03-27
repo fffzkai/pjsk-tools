@@ -148,7 +148,7 @@ function importFrom(dataStr: string) {
     updateRankStep();
     mySekai.value = data.mySekai;
     for (let i = 0; i < 5 && i < data.stamp.length; i++) {
-        stamp[i] = data.stamp[i] || undefined;
+        stamp[i] = data.stamp[i];
     }
     for (let key in data.pExchange) {
         pExchange[key as keyof typeof pExchange] = number(data.pExchange[key]);
