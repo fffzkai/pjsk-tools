@@ -346,7 +346,7 @@ const statistics = computed(() => {
         count: 0
     };
     map["gacha"] = {
-        icon: "icon-gacha-ticket",
+        icon: "icon-gacha-ticket-cnfree",
         count: gacha
     };
     map["drinkL"] = {
@@ -454,7 +454,7 @@ const signInRewardList = data.signIn.map((item, index) => {
         tooltip += `${item.jewel}<i class="icon-jewel" ></i> `;
     }
     if (item.gacha) {
-        tooltip += `${item.gacha}<i class="icon-gacha-ticket" ></i> `;
+        tooltip += `${item.gacha}<i class="icon-gacha-ticket-cnfree" ></i> `;
     }
     return {
         label: `<div class="block"><div><i class="icon-material170 size-16" ></i></div><div class="text-xs font-medium">DAY ${index + 1}</div></div><span
@@ -606,7 +606,7 @@ function exportAndCopy() {
                     <span class="text-yellow-400 dark:text-yellow-300 text-lg mx-1 sm:mx-2">{{
                         signInRewards.gacha
                     }}</span>
-                    <i class="icon-gacha-ticket drop-shadow-sm"></i>
+                    <i class="icon-gacha-ticket-cnfree drop-shadow-sm"></i>
                 </div>
                 <div class="px-2 mt-2">
                     <PartH2 level="3"> 卡池获取 </PartH2>
@@ -846,7 +846,7 @@ function exportAndCopy() {
                                             <span class="text-yellow-400 mr-0.5">{{
                                                 card.rewards.gacha
                                             }}</span
-                                            ><i class="icon-gacha-ticket drop-shadow-sm" />
+                                            ><i class="icon-gacha-ticket-cnfree drop-shadow-sm" />
                                         </span>
                                         <span
                                             v-if="card.rewards.drinkL"

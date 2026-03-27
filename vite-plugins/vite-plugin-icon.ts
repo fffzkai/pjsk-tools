@@ -53,6 +53,8 @@ function generateIconCSS({
     icons["coin"] = "https://snowyassets.exmeaning.com/startapp/thumbnail/common_material/coin.png";
     icons["gacha-ticket"] =
         "https://snowyassets.exmeaning.com/startapp/thumbnail/gacha_ticket/gacha_ticket.png";
+    // icons["gacha-ticket-cnfree"] =
+    //     "https://snowyassets.exmeaning.com/startapp/thumbnail/gacha_ticket/gacha_ticket_cnfree.png";
     icons["gacha-ticket-star4"] =
         "https://snowyassets.exmeaning.com/startapp/thumbnail/gacha_ticket/gacha_ticket_star4.png";
     for (const name of ["shiho"]) {
