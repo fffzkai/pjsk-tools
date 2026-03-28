@@ -566,7 +566,7 @@ const ptExchange = {
     },
     shizuku: {
         count: 1,
-        expense: 30000,
+        expense: 50000,
         limit: 3,
         icon: "icon-material57"
     },
